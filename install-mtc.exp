@@ -1,0 +1,13 @@
+#!/usr/bin/expect -f
+set timeout 60
+spawn svn co https://extsvnsrv.fokus.fraunhofer.de/svn/cc/ngni/OpenMTC-Chula/ --username chulam2m
+expect "Password for 'chulam2m':"
+send "Kui4eitu\r"
+expect "*(yes/no)?"
+send "no\r"
+expect "*$"
+#send "cd OpenMTC-Chula\r"
+#expect "*$"
+#send "make setup\r"
+expect eof
+exit 0
