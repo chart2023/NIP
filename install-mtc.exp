@@ -6,8 +6,5 @@ send "Kui4eitu\r"
 expect "*(yes/no)?"
 send "no\r"
 expect "*$"
-#send "cd OpenMTC-Chula\r"
-#expect "*$"
-#send "make setup\r"
 expect eof
 exit 0
