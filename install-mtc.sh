@@ -8,5 +8,5 @@ cd node-v0.10.22
 cd ..
 expect /opt/openbaton/scripts/install-mtc.exp
 cd OpenMTC-Chula
-make setup
+sudo make setup
 npm install winston
