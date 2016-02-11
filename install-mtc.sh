@@ -15,5 +15,6 @@ sudo npm -g install npm@2.7.6
 expect /opt/openbaton/scripts/install-mtc.exp
 cd OpenMTC-Chula
 sudo make setup
-npm install winston
-#npm install log4js
+sudo npm install winston
+sudo npm install log4js
+sudo node /OpenMTC-Chula/nscl
