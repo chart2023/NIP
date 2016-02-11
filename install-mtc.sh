@@ -17,4 +17,5 @@ cd OpenMTC-Chula
 sudo make setup
 sudo npm install winston
 sudo npm install log4js
-sudo node /OpenMTC-Chula/nscl
+#sudo node /OpenMTC-Chula/nscl
+sudo nohup node /OpenMTC-Chula/nscl &
