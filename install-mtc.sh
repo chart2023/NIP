@@ -7,10 +7,11 @@ sudo apt-get install language-pack-en-base
 sudo locale-gen en_US en_US.UTF-8 cy_GB.UTF-8
 sudo apt-get install mongodb make subversion expect -y
 sudo apt-get install gcc libssl-dev g++ make -y
-wget -qO - http://nodejs.org/dist/v0.10.9/node-v0.10.9.tar.gz | tar -xz
-cd node-v0.10.9
+wget -qO - http://nodejs.org/dist/v0.10.42/node-v0.10.42.tar.gz | tar -xz
+cd node-v0.10.42
 ./configure && make && sudo make install
 cd ..
+sudo npm -g install npm@2.7.6
 expect /opt/openbaton/scripts/install-mtc.exp
 cd OpenMTC-Chula
 sudo make setup
