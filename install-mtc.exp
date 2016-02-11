@@ -6,5 +6,5 @@ send "Kui4eitu\r"
 expect "*(yes/no)?"
 send "no\r"
 expect "*$"
-expect eof
+#expect eof
 exit 0
