@@ -1,4 +1,7 @@
 #!/bin/bash
+log_file="/home/ubuntu/installnip-log.txt"
+[ -f "$log_file" ] || touch "$log_file"
+exec 1>> $log_file 2>&1
 sudo mkdir /OpenMTC-Chula/openmtc-NIP/
 sudo git clone https://github.com/chart2023/ProxyGateway.git /OpenMTC-Chula/openmtc-NIP/
 sudo cp /OpenMTC-Chula/openmtc-NIP/ProxyGateway/config-nscl.js /OpenMTC-Chula/openmtc/settings/
