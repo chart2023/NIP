@@ -10,7 +10,7 @@ sudo cp /OpenMTC-Chula/openmtc-NIP/ProxyGateway/config-gscl.js /OpenMTC-Chula/op
 sudo mkdir /OpenMTC-Chula/openmtc-NIP/lib
 sudo mkdir /OpenMTC-Chula/openmtc-NIP/lib/NIP
 sudo cp /OpenMTC-Chula/openmtc-NIP/ProxyGateway/NIP/index.js /OpenMTC-Chula/openmtc-NIP/lib/NIP/
-sudo cp /OpenMTC-Chula/openmtc-NIP/ProxyGateway/openmtc/index.js /OpenMTC-Chula/openmtc/lib/
+sudo cp /OpenMTC-Chula/openmtc-NIP/ProxyGateway/openmtclib/index.js /OpenMTC-Chula/openmtc/lib/
 sudo ln -s /OpenMTC-chula/node_modules /OpenMTC-Chula/openmtc-NIP/
 sudo ln -s /OpenMTC-Chula/openmtc /OpenMTC-Chula/openmtc-NIP/node_modules/
 sudo ln -s /OpenMTC-Chula/openmtc /OpenMTC-Chula/node_modules/
