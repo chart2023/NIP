@@ -15,7 +15,5 @@ sudo npm -g install npm@2.7.6
 expect /opt/openbaton/scripts/install-mtc.exp
 cd OpenMTC-Chula
 sudo make setup
-sudo npm install winston
-sudo npm install log4js
-#sudo node /OpenMTC-Chula/nscl
-sudo nohup node /OpenMTC-Chula/nscl &
+sudo npm install log4js exectimer express lazy lib moment node-uuid optimist socket.io xml2js xml2json
+
