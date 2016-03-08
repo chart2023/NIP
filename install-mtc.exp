@@ -1,5 +1,5 @@
 #!/usr/bin/expect -f
-set timeout 160
+set timeout 300
 spawn svn co https://extsvnsrv.fokus.fraunhofer.de/svn/cc/ngni/OpenMTC-Chula/ --username chulam2m
 expect "Password for 'chulam2m':"
 send "Kui4eitu\r"
