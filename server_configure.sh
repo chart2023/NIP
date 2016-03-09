@@ -5,3 +5,4 @@
 sudo echo $server_private >> /home/ubuntu/clientinfo.txt
 sudo echo $server_private_floatingIp >> /home/ubuntu/clientinfo.txt
 sudo echo exports.iplocal=\'$server_private\'\; >> /OpenMTC-Chula/openmtc/settings/ipnscl.js
+sudo bash -c "echo `ifconfig eth0 2>/dev/null|awk '/inet addr:/ {print $2}'|sed 's/addr://'` >> /OpenMTC-Chula/openmtc/settings/ipnscl.js"
