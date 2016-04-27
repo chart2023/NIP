@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo nohup sudo node /OpenMTC-Chula/nscl &
+sudo nohup sudo node /home/ubuntu/OpenMTC-Chula/nscl &
