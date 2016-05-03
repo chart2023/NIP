@@ -15,3 +15,6 @@ cd ..
 sudo npm -g install npm@2.7.6
 wget --tries=10 http://192.168.9.11:8080/v1/AUTH_ee10034eae5a462daa29e6f9f2738e8e/openmtc/OpenMTC-nscl.zip -O /home/ubuntu/OpenMTC-nscl.zip
 unzip /home/ubuntu/OpenMTC-nscl.zip
+sudo cp /opt/openbaton/scripts/start-nscl.sh /etc/init.d/start-nscl.sh
+sudo chmod ugo+x /etc/init.d/start-nscl.sh
+sudo update-rc.d start-nscl.sh defaults
