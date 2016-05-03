@@ -15,6 +15,6 @@ cd ..
 sudo npm -g install npm@2.7.6
 wget --tries=10 http://192.168.9.11:8080/v1/AUTH_ee10034eae5a462daa29e6f9f2738e8e/openmtc/OpenMTC-nip.zip -O /home/ubuntu/OpenMTC-nip.zip
 unzip /home/ubuntu/OpenMTC-nip.zip
-sudo cp /opt/openbaton/scripts/start-nip.sh /etc/init.d/start-nip.sh
-sudo chmod ugo+x /etc/init.d/start-nip.sh
-sudo update-rc.d start-nip.sh defaults
+sudo cp /opt/openbaton/scripts/start-real-time.sh /etc/init.d/start-real-time.sh
+sudo chmod ugo+x /etc/init.d/start-real-time.sh
+sudo update-rc.d start-real-time.sh defaults
