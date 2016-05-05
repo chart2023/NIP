@@ -10,3 +10,4 @@ sudo apt-get install nodejs
 sudo apt-get install -y build-essential
 sudo apt-get install npm
 sudo npm -g install npm@2.7.6
+ sudo ln -s /usr/bin/nodejs /usr/bin/node
