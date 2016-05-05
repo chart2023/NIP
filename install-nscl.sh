@@ -12,7 +12,7 @@ sudo apt-get install gcc libssl-dev g++ make unzip -y
 #cd /node-v0.10.42/
 #./configure && make && sudo make install
 #cd ..
-sudo apt-get install nodejs
+sudo apt-get install -y nodejs
 sudo apt-get install -y build-essential
 sudo npm -g install npm@2.7.6
 wget --tries=10 http://192.168.9.11:8080/v1/AUTH_ee10034eae5a462daa29e6f9f2738e8e/openmtc/OpenMTC-nscl.zip -O /home/ubuntu/OpenMTC-nscl.zip
