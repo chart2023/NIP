@@ -8,6 +8,6 @@ exec 1>> $log_file 2>&1
 #cd ..
 sudo apt-get install -y nodejs
 sudo apt-get install -y build-essential
-sudo apt-get install npm
+sudo apt-get install -y npm
 sudo npm -g install npm@2.7.6
  sudo ln -s /usr/bin/nodejs /usr/bin/node
