@@ -10,6 +10,6 @@ sudo apt-get install mongodb make subversion expect -y
 sudo apt-get install gcc libssl-dev g++ make unzip -y
 wget --tries=10 http://192.168.9.14:8080/v1/AUTH_d73b59ff5bd44abcb5f30eafe2aaf149/openmtc/OpenMTC-nip8082.zip -O /home/ubuntu/OpenMTC-nip.zip
 unzip /home/ubuntu/OpenMTC-nip.zip
-sudo cp /opt/openbaton/scripts/start-real-time.sh /etc/init.d/start-real-time.sh
-sudo chmod ugo+x /etc/init.d/start-real-time.sh
-sudo update-rc.d start-real-time.sh defaults
+sudo cp /opt/openbaton/scripts/start-nip.sh /etc/init.d/start-nip.sh
+sudo chmod ugo+x /etc/init.d/start-nip.sh
+sudo update-rc.d start-nip.sh defaults
