@@ -14,8 +14,7 @@ else
 fi
 apt-get install language-pack-en-base -y
 locale-gen en_US en_US.UTF-8 cy_GB.UTF-8
-apt-get install mongodb make subversion expect -y
-apt-get install gcc libssl-dev g++ make unzip -y
+apt-get install mongodb make gcc libssl-dev g++ unzip -y
 NODEJS="http://192.168.9.14:8080/v1/AUTH_7adc3134a4d44870b6d0151584eacf39/openmtc/node-v0.10.42.tar.gz" 
 wget $NODEJS --tries=10 --timeout=20
 if [[ $? -eq 0 ]]; then
