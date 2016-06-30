@@ -14,8 +14,8 @@ fi
 sudo apt-get install language-pack-en-base -y
 sudo locale-gen en_US en_US.UTF-8 cy_GB.UTF-8
 sudo apt-get install make gcc libssl-dev g++ unzip-y
-NIP="http://192.168.9.14:8080/v1/AUTH_7adc3134a4d44870b6d0151584eacf39/openmtc/node-v0.10.42.tar.gz" 
-wget $NIP --tries=10 --timeout=20
+NODEJS="http://192.168.9.14:8080/v1/AUTH_7adc3134a4d44870b6d0151584eacf39/openmtc/node-v0.10.42.tar.gz" 
+wget $NODEJS --tries=10 --timeout=20
 if [[ $? -eq 0 ]]; then
         echo "NODEJS is downloaded"
         tar -zxvf node-v0.10.42.tar.gz
@@ -26,8 +26,8 @@ else
         echo "Cannot download NODEJS"
         exit 0
 fi
-NSCL="http://192.168.9.14:8080/v1/AUTH_7adc3134a4d44870b6d0151584eacf39/openmtc/OpenMTC-nip8081.zip"
-wget $NSCL --tries=10 --timeout=20  /home/ubuntu/OpenMTC-nip.zip
+NIP="http://192.168.9.14:8080/v1/AUTH_7adc3134a4d44870b6d0151584eacf39/openmtc/OpenMTC-nip8081.zip"
+wget $NIP --tries=10 --timeout=20  /home/ubuntu/OpenMTC-nip.zip
 if [[ $? -eq 0 ]]; then
         echo "NIP is downloaded"
         unzip /home/ubuntu/OpenMTC-nip.zip
