@@ -1,5 +1,5 @@
 #!/bin/bash
-NSCL_START_TIME=$(date +%s)
+NSCL_START_TIME=$(date)
 log_file="/home/ubuntu/install-log.txt"
 [ -f "$log_file" ] || touch "$log_file"
 exec 1>> $log_file 2>&1
