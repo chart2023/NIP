@@ -4,18 +4,37 @@ log_file="/home/ubuntu/install-log.txt"
 exec 1>> $log_file 2>&1
 #sudo apt-get update
 sudo bash -c "echo 127.0.1.1 `cat /etc/hostname` >> /etc/hosts"
+wget -q --tries=10 --timeout=20 --spider  http://archive.ubuntu.com
+if [[ $? -eq 0 ]]; then
+        echo "Online"
+else
+        echo "Offline"
+        exit 0
+fi
 sudo apt-get install language-pack-en-base -y
 sudo locale-gen en_US en_US.UTF-8 cy_GB.UTF-8
-sudo apt-get install mongodb make subversion expect -y
-sudo apt-get install gcc libssl-dev g++ make unzip -y
-wget --tries=10 -O - http://192.168.9.14:8080/v1/AUTH_7adc3134a4d44870b6d0151584eacf39/openmtc/node-v0.10.42.tar.gz | tar -xz
-cd /node-v0.10.42/
-./configure && make && sudo make install
-cd ..
-sudo apt-get install -y build-essential
-sudo npm -g install npm@2.7.6
-wget --tries=10 http://192.168.9.14:8080/v1/AUTH_7adc3134a4d44870b6d0151584eacf39/openmtc/OpenMTC-nip8081.zip -O /home/ubuntu/OpenMTC-nip.zip
-unzip /home/ubuntu/OpenMTC-nip.zip
-sudo cp /opt/openbaton/scripts/start-nip.sh /etc/init.d/start-nip.sh
-sudo chmod ugo+x /etc/init.d/start-nip.sh
-sudo update-rc.d start-nip.sh defaults
+sudo apt-get install make gcc libssl-dev g++ unzip-y
+NODEJS="http://192.168.9.14:8080/v1/AUTH_7adc3134a4d44870b6d0151584eacf39/openmtc/node-v0.10.42.tar.gz" 
+wget $NODEJS --tries=10 --timeout=20
+if [[ $? -eq 0 ]]; then
+        echo "NODEJS is downloaded"
+        tar -zxvf node-v0.10.42.tar.gz
+        cd /node-v0.10.42/
+        ./configure && make && sudo make install
+        npm -g install npm@2.7.6
+else
+        echo "Cannot download NODEJS"
+        exit 0
+fi
+NSCL="http://192.168.9.14:8080/v1/AUTH_7adc3134a4d44870b6d0151584eacf39/openmtc/OpenMTC-nip8081.zip"
+wget $NSCL --tries=10 --timeout=20  /home/ubuntu/OpenMTC-nip.zip
+if [[ $? -eq 0 ]]; then
+        echo "NIP is downloaded"
+        unzip /home/ubuntu/OpenMTC-nip.zip
+        cp /opt/openbaton/scripts/start-nip.sh /etc/init.d/start-nip.sh
+        chmod ugo+x /etc/init.d/start-nip.sh
+        update-rc.d start-nip.sh defaults
+else
+        echo "Cannot download NIP"
+        exit 0
+fi
