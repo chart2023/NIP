@@ -5,6 +5,13 @@ log_file="/home/ubuntu/install-log.txt"
 exec 1>> $log_file 2>&1
 #sudo apt-get update
 bash -c "echo 127.0.1.1 `cat /etc/hostname` >> /etc/hosts"
+wget -q --tries=10 --timeout=20 --spider  http://archive.ubuntu.com
+if [[ $? -eq 0 ]]; then
+        echo "Online"
+else
+        echo "Offline"
+        exit 0
+fi
 apt-get install language-pack-en-base -y
 locale-gen en_US en_US.UTF-8 cy_GB.UTF-8
 apt-get install mongodb make subversion expect -y
