@@ -17,9 +17,10 @@ locale-gen en_US en_US.UTF-8 cy_GB.UTF-8
 apt-get install mongodb make subversion expect -y
 apt-get install gcc libssl-dev g++ make unzip -y
 NODEJS="http://192.168.9.14:8080/v1/AUTH_7adc3134a4d44870b6d0151584eacf39/openmtc/node-v0.10.42.tar.gz" 
-wget -q --tries=10 --timeout=20 --spider -O $NODEJS | tar -xz
+wget $NODEJS --tries=10 --timeout=20
 if [[ $? -eq 0 ]]; then
         echo "NODEJS is downloaded"
+        tar -zxvf node-v0.10.42.tar.gz
         cd /node-v0.10.42/
         ./configure && make && sudo make install
         npm -g install npm@2.7.6
@@ -28,7 +29,7 @@ else
         exit 0
 fi
 NSCL="http://192.168.9.14:8080/v1/AUTH_7adc3134a4d44870b6d0151584eacf39/openmtc/OpenMTC-nscl.zip"
-wget -q --tries=10 --timeout=20 --spider -O $NSCL /home/ubuntu/OpenMTC-nscl.zip
+wget $NSCL --tries=10 --timeout=20  /home/ubuntu/OpenMTC-nscl.zip
 if [[ $? -eq 0 ]]; then
         echo "NSCL is downloaded"
         unzip /home/ubuntu/OpenMTC-nscl.zip
