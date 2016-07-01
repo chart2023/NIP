@@ -15,14 +15,12 @@ sudo apt-get install language-pack-en-base -y
 sudo locale-gen en_US en_US.UTF-8 cy_GB.UTF-8
 sudo apt-get install make gcc libssl-dev g++ unzip -y
 NODEJS="http://192.168.9.14:8080/v1/AUTH_7adc3134a4d44870b6d0151584eacf39/openmtc/node-v0.10.42.tar.gz" 
-wget $NODEJS --tries=10 --timeout=20
+wget $NODEJS --tries=10 --timeout=20 --output-document=/home/ubuntu/node-v0.10.42.tar.gz
 if [[ $? -eq 0 ]]; then
         echo "NODEJS is downloaded"
         tar -zxvf node-v0.10.42.tar.gz
-        cd /node-v0.10.42/
+        cd /home/ubuntu/node-v0.10.42/
         ./configure && make && sudo make install
-        apt-get install build-essential
-        cd ..
         npm -g install npm@2.7.6
 else
         echo "Cannot download NODEJS"
