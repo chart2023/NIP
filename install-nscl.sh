@@ -19,7 +19,7 @@ NODEJS="http://192.168.9.14:8080/v1/AUTH_7adc3134a4d44870b6d0151584eacf39/openmt
 wget $NODEJS --tries=10 --timeout=20 --output-document=/home/ubuntu/node-v0.10.42.tar.gz
 if [[ $? -eq 0 ]]; then
         echo "NODEJS is downloaded"
-        tar -zxvf node-v0.10.42.tar.gz
+        tar -zxvf /home/ubuntu/node-v0.10.42.tar.gz
         cd /home/ubuntu/node-v0.10.42/
         ./configure && make && sudo make install
         apt-get install build-essential -y
