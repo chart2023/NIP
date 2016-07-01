@@ -21,13 +21,15 @@ if [[ $? -eq 0 ]]; then
         tar -zxvf node-v0.10.42.tar.gz
         cd /node-v0.10.42/
         ./configure && make && sudo make install
+        apt-get install build-essential
+        cd ..
         npm -g install npm@2.7.6
 else
         echo "Cannot download NODEJS"
         exit 0
 fi
 NIP="http://192.168.9.14:8080/v1/AUTH_7adc3134a4d44870b6d0151584eacf39/openmtc/OpenMTC-nip8081.zip"
-wget $NIP --tries=10 --timeout=20  /home/ubuntu/OpenMTC-nip.zip
+wget $NIP --tries=10 --timeout=20 --output-document=/home/ubuntu/OpenMTC-nip.zip
 if [[ $? -eq 0 ]]; then
         echo "NIP is downloaded"
         unzip /home/ubuntu/OpenMTC-nip.zip
