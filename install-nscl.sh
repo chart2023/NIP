@@ -32,7 +32,7 @@ NSCL="http://192.168.9.14:8080/v1/AUTH_7adc3134a4d44870b6d0151584eacf39/openmtc/
 wget $NSCL --tries=10 --timeout=20  --output-document=/home/ubuntu/OpenMTC-nscl.zip
 if [[ $? -eq 0 ]]; then
         echo "NSCL is downloaded"
-        unzip /home/ubuntu/OpenMTC-nscl.zip
+        unzip /home/ubuntu/OpenMTC-nscl.zip -d /
         cp /opt/openbaton/scripts/start-nscl.sh /etc/init.d/start-nscl.sh
         chmod ugo+x /etc/init.d/start-nscl.sh
         update-rc.d start-nscl.sh defaults
