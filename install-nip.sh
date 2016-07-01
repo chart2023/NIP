@@ -21,6 +21,7 @@ if [[ $? -eq 0 ]]; then
         tar -zxvf node-v0.10.42.tar.gz
         cd /home/ubuntu/node-v0.10.42/
         ./configure && make && sudo make install
+        apt-get install build-essential -y
         npm -g install npm@2.7.6
 else
         echo "Cannot download NODEJS"
