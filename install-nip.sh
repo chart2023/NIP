@@ -31,7 +31,7 @@ NIP="http://192.168.9.14:8080/v1/AUTH_7adc3134a4d44870b6d0151584eacf39/openmtc/O
 wget $NIP --tries=10 --timeout=20 --output-document=/home/ubuntu/OpenMTC-nip.zip
 if [[ $? -eq 0 ]]; then
         echo "NIP is downloaded"
-        unzip /home/ubuntu/OpenMTC-nip.zip
+        unzip /home/ubuntu/OpenMTC-nip.zip -d /
         cp /opt/openbaton/scripts/start-nip.sh /etc/init.d/start-nip.sh
         chmod ugo+x /etc/init.d/start-nip.sh
         update-rc.d start-nip.sh defaults
