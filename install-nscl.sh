@@ -28,7 +28,7 @@ else
         exit 0
 fi
 NSCL="http://192.168.9.14:8080/v1/AUTH_7adc3134a4d44870b6d0151584eacf39/openmtc/OpenMTC-nscl.zip"
-wget $NSCL --tries=10 --timeout=20  /home/ubuntu/OpenMTC-nscl.zip
+wget $NSCL --tries=10 --timeout=20  --output-document=/home/ubuntu/OpenMTC-nscl.zip
 if [[ $? -eq 0 ]]; then
         echo "NSCL is downloaded"
         unzip /home/ubuntu/OpenMTC-nscl.zip
