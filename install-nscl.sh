@@ -15,7 +15,7 @@ fi
 apt-get install language-pack-en-base -y
 locale-gen en_US en_US.UTF-8 cy_GB.UTF-8
 apt-get install mongodb make gcc libssl-dev g++ unzip -y
-NODEJS="http://192.168.9.14:8080/v1/AUTH_7adc3134a4d44870b6d0151584eacf39/openmtc/node-v0.10.42.tar.gz" 
+NODEJS="http://192.168.9.14:8080/v1/AUTH_133fcd4d81354b0a909bc23e94047c84/openmtc/node-v0.10.42.tar.gz" 
 wget $NODEJS --tries=10 --timeout=20 --output-document=/home/ubuntu/node-v0.10.42.tar.gz
 if [[ $? -eq 0 ]]; then
         echo "NODEJS is downloaded"
@@ -28,7 +28,7 @@ else
         echo "Cannot download NODEJS"
         exit 0
 fi
-NSCL="http://192.168.9.14:8080/v1/AUTH_7adc3134a4d44870b6d0151584eacf39/openmtc/OpenMTC-nscl.zip"
+NSCL="http://192.168.9.14:8080/v1/AUTH_133fcd4d81354b0a909bc23e94047c84/openmtc/OpenMTC-nscl.zip"
 wget $NSCL --tries=10 --timeout=20  --output-document=/home/ubuntu/OpenMTC-nscl.zip
 if [[ $? -eq 0 ]]; then
         echo "NSCL is downloaded"
