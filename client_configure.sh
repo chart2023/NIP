@@ -1,7 +1,4 @@
 #!/bin/bash
-#sudo touch /opt/openbaton/clientinfo.txt
-#sudo bash -c 'echo $client_private > /opt/openbaton/clientinfo.txt'
-#sudo bash -c 'echo $client_private_floatingIp >> /opt/openbaton/clientinfo.txt'
-sudo echo $client_private >> /home/ubuntu/serverinfo.txt
-sudo echo $client_private_floatingIp >> /home/ubuntu/serverinfo.txt
-#sudo echo $server_hostname >> /home/ubuntu/serverinfo.txt
+echo "nip_ip=$client_private" | sudo tee --append ${HOME}/nip_info.conf
+echo "nip_fip=$client_private_floatingIp" | sudo tee --append ${HOME}/nip_info.conf
+echo "nip_hostname=$client_hostname" | sudo tee --append ${HOME}/nip_info.conf
