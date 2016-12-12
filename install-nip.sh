@@ -1,41 +1,33 @@
 #!/bin/bash
-log_file="/home/ubuntu/install-log.txt"
+#############################
+#1. Setup host ip
+#2. Setup start_nip.sh to start when instance boot
+############################
+NIP_START_TIME=$(date)
+myhome=${HOME}
+log_file="$myhome/install-log.txt"
 [ -f "$log_file" ] || touch "$log_file"
 exec 1>> $log_file 2>&1
-#sudo apt-get update
-sudo bash -c "echo 127.0.1.1 `cat /etc/hostname` >> /etc/hosts"
+rm -rf /opt/openbaton/scripts/
+dpkg-reconfigure -f noninteractive tzdata
+apt-get update
+apt-get install --reinstall tzdata -y
+ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p' > ./ipaddress.txt
+ipfile="./ipaddress.txt"
+ipaddress=$(head -1 $ipfile)
+bash -c "echo $ipaddress `cat /etc/hostname` >> /etc/hosts"
 wget -q --tries=10 --timeout=20 --spider  http://archive.ubuntu.com
 if [[ $? -eq 0 ]]; then
-        echo "Online"
+        echo "Server can connect to Internet"
 else
-        echo "Offline"
-        exit 0
+        echo "Server cannot connect to Internet"
 fi
-sudo apt-get install language-pack-en-base -y
-sudo locale-gen en_US en_US.UTF-8 cy_GB.UTF-8
-sudo apt-get install make gcc libssl-dev g++ unzip -y
-NODEJS="http://192.168.9.14:8080/v1/AUTH_133fcd4d81354b0a909bc23e94047c84/openmtc/node-v0.10.42.tar.gz" 
-wget $NODEJS --tries=10 --timeout=20 --output-document=/home/ubuntu/node-v0.10.42.tar.gz
-if [[ $? -eq 0 ]]; then
-        echo "NODEJS is downloaded"
-        tar -zxvf /home/ubuntu/node-v0.10.42.tar.gz -C /opt/
-        cd /opt/node-v0.10.42/
-        ./configure && make && sudo make install
-        apt-get install build-essential -y
-        npm -g install npm@2.7.6
-else
-        echo "Cannot download NODEJS"
-        exit 0
-fi
-NIP="http://192.168.9.14:8080/v1/AUTH_133fcd4d81354b0a909bc23e94047c84/openmtc/OpenMTC-nip8081.zip"
-wget $NIP --tries=10 --timeout=20 --output-document=/home/ubuntu/OpenMTC-nip.zip
-if [[ $? -eq 0 ]]; then
-        echo "NIP is downloaded"
-        unzip /home/ubuntu/OpenMTC-nip.zip -d /
-        cp /opt/openbaton/scripts/start-nip.sh /etc/init.d/start-nip.sh
-        chmod ugo+x /etc/init.d/start-nip.sh
-        update-rc.d start-nip.sh defaults
-else
-        echo "Cannot download NIP"
-        exit 0
-fi
+cp /opt/openbaton/scripts/start-nip.sh /etc/init.d/start-nip.sh
+chmod ugo+x /etc/init.d/start-nip.sh
+update-rc.d start-nip.sh defaults
+ntpq -p
+wget http://192.168.9.14:8080/v1/AUTH_b8e61c4a0b1b4d2f82929563cab8c55a/openmtc/openstack_key14.pem --output-document=${HOME}/openstack_key14.pem
+sudo chmod 600 ${HOME}/openstack_key14.pem
+$user='ubuntu'
+$dbhost='192.168.9.122'
+ssh -o StrictHostKeyChecking=no -i ${HOME}/openstack_key14.pem -l $user $dbhost --eval "bash /opt/openbaton/scripts/setup-shard.sh"
